@@ -117,7 +117,6 @@ def chat_callback(message, history):
         model="gpt-4o-mini",
         messages=messages,
         tools=tools
-        # stream=True
     )
 
     first_choice = response.choices[0]
@@ -135,17 +134,6 @@ def chat_callback(message, history):
         )
 
     return response.choices[0].message.content
-
-    # response_str = ""
-    # for chunk in response:
-        # print(chunk)
-        # delta = chunk.choices[0].delta.content
-        # if delta:            
-            # response_str += delta
-        # else:
-            # response_str += ""
-        
-        # yield response_str
 
 interface = gr.ChatInterface(chat_callback, type="messages")
 interface.launch()
